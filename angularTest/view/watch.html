@@ -15,7 +15,7 @@
                 <img src="../images/{{item.src}}" />
                 <div>
                     <p>{{item.proName}}</p>
-                    <span>￥{{item.proPrice}}元</span>
+                    <span>{{item.proPrice|currency:"￥"}} 元</span>
                 </div>
                 <div class="btns">
                     <input type="button" value="-" ng-click="subnum($index)" />
@@ -42,7 +42,7 @@
             $scope.proInfo = [{
                 src: "1.jpg",
                 proName: "这是第一个小猪，当前正在热销中",
-                proPrice: 100,
+                proPrice: 100.1245,
                 Num: 2
             },
             {
@@ -114,11 +114,11 @@
             }
 
             //判断购买的输入框输入的是否是数字
-            $scope.numCheck = function (n) {
-                if (! /^\d+$/.test($scope.proInfo[n].Num)) {
-                    $scope.proInfo[n].Num = 1;
-                }
-            }
+            //$scope.numCheck = function (n) {
+            //    if (! /^\d+$/.test($scope.proInfo[n].Num)) {
+            //        $scope.proInfo[n].Num = 1;
+            //    }
+            //}
         });
 
     </script>

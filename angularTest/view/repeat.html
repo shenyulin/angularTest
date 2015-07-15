@@ -26,7 +26,7 @@
                 <td>{{item.tel}}</td>
                 <td>{{item.Email}}</td>
                 <td>{{item.address}}</td>
-                <td><input type="button" name="" value="删除" ng-click="DelUser()" /> </td>
+                <td><input type="button" name="" value="删除" ng-click="DelUser($index)" /> </td>
             </tr>
         </table>
         <input type="button" value="添加一条数据" class="btn" ng-click="addUser();" />
@@ -46,12 +46,12 @@
             //插入一个数据
             $scope.addUser = function () {
                 var addStr = { name: "XiaoPengYou", tel: "13812124545", Email: "112@qq.cm", address: "北京市朝阳区" };
-                $scope.userInfos.slice(0, 0, { name: "XiaoPengYou", tel: "13812124545", Email: "112@qq.cm", address: "北京市朝阳区" });
+                $scope.userInfos.splice(0, 0, addStr);
             }
 
 
-            $scope.DelUser = function () {
-                $scope.userInfos.slice(0, 1, { name: "XiaoPengYou", tel: "13812124545", Email: "112@qq.cm", address: "北京市朝阳区" });
+            $scope.DelUser = function (n) {
+                $scope.userInfos.splice(n, 1);
             }
 
         });

@@ -264,6 +264,7 @@
     <Content Include="node_modules\jquery\src\sizzle\test\index.html" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="view\form.html" />
     <Content Include="view\helloword.html" />
     <Content Include="view\repeat.html" />
     <Content Include="view\watch.html" />

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="signUpModule">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form ng-controller="signupController">
+        <ul>
+            <li>
+                <label>用户名：</label>
+                <input type="text" value="" required />
+            </li>
+            <li>
+                <label>邮箱：</label>
+                <input type="email" value="" required />
+            </li>
+            <li>
+                <label>密码：</label>
+                <input type="password" value="" required  />
+            </li>
+            <li>
+                <label>确认密码：</label>
+                <input type="password" value="" required />
+            </li>
+            <li>
+                <label></label>
+                <input type="button" ng-click="addUser()" value="提交" />
+            </li>
+
+        </ul>
+    </form>
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script>
+        var app = angular.module("signUpModule", []);
+        app.controller("signupController", function ($scope) {
+            $scope.message = "";
+            $scope.addUser = function () {
+
+            }
+        });
+    </script>
+</body>
+</html>
