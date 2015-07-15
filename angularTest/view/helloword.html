@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myModule">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+</head>
+<body>
+
+    <div class="container">
+        <strong>普通表达式</strong>
+        <div class="hello" ng-init="name='World'">
+            hello,{{name}}<br />
+        </div>
+        <hr>
+
+        <strong>文本框绑定</strong>
+        <div>
+            Your name: <input type="text" ng-model="yourname" placeholder=""><br />
+            你输入的名字是： {{yourname||"Annie"}}
+        </div>
+        <hr>
+
+
+        <strong>控制器和文本框绑定</strong>
+        <div ng-controller="MyController">
+            Your name: <input type="text" ng-model="person.name" placeholder=""><br />
+            MyController 控制器的内容是： {{person.name}}
+            <hr>
+        </div>
+    </div>
+
+
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script>
+        var myModule = angular.module("myModule", []);
+        myModule.controller("MyController", function ($scope) {
+            $scope.person = {
+                name: "xiaopengyou"
+            }
+        })
+    </script>
+</body>
+</html>

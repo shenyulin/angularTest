@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="userInfoModule">
+<head>
+    <meta charset="utf-8" />
+    <title>repeat</title>
+    <style>
+        table { border: 1px solid #ccc; border-collapse: collapse; width: 80%; text-align: left; margin: 15px 0; }
+            table td, table th { border-bottom: 1px solid #ccc; padding: 10px; }
+        .btn { width: 120px; height: 35px; background-color: #0094ff; color: #fff; border: none; font-family: 'Microsoft YaHei'; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="container" ng-controller="userController">
+        <table>
+            <tr>
+                <th>用户名</th>
+                <th>手机</th>
+                <th>邮箱</th>
+                <th>地址</th>
+                <th>操作</th>
+            </tr>
+            <tr ng-repeat="item in userInfos">
+                <td>{{item.name}}</td>
+                <td>{{item.tel}}</td>
+                <td>{{item.Email}}</td>
+                <td>{{item.address}}</td>
+                <td><input type="button" name="" value="删除" ng-click="DelUser()" /> </td>
+            </tr>
+        </table>
+        <input type="button" value="添加一条数据" class="btn" ng-click="addUser();" />
+    </div>
+
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script>
+        var userInfo = angular.module("userInfoModule", []);
+            userInfo.controller("userController", function ($scope) {
+            $scope.userInfos = [
+                { name: "ZhangSan", tel: "13812124545", Email: "112@qq.cm", address: "北京市朝阳区" },
+                { name: "LiSi", tel: "18612356", Email: "46045708@qq.cm", address: "北京市朝阳区" },
+                { name: "WangEr", tel: "15012301212", Email: "112@qq.cm", address: "北京市朝阳区" }
+            ];
+
+
+            //插入一个数据
+            $scope.addUser = function () {
+                var addStr = { name: "XiaoPengYou", tel: "13812124545", Email: "112@qq.cm", address: "北京市朝阳区" };
+                $scope.userInfos.slice(0, 0, { name: "XiaoPengYou", tel: "13812124545", Email: "112@qq.cm", address: "北京市朝阳区" });
+            }
+
+
+            $scope.DelUser = function () {
+                $scope.userInfos.slice(0, 1, { name: "XiaoPengYou", tel: "13812124545", Email: "112@qq.cm", address: "北京市朝阳区" });
+            }
+
+        });
+
+
+
+
+
+    </script>
+</body>
+</html>

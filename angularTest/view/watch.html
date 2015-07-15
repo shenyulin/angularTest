@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="cartModule">
+<head>
+    <meta charset="utf-8" />
+    <title>wacth实例</title>
+    <link href="../css/watch.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container" ng-controller="cartController">
+        <ul>
+            <li ng-repeat="item in proInfo">
+
+                <img src="../images/{{item.src}}" />
+                <div>
+                    <p>{{item.proName}}</p>
+                    <span>￥{{item.proPrice}}元</span>
+                </div>
+                <div class="btns">
+                    <input type="button" value="-" ng-click="subnum($index)" />
+                    <input type="text" ng-model="item.Num" ng-keyup="numCheck($index)" />
+                    <input type="button" value="+" ng-click="addnum($index)" />
+                    <input type="button" value="删除" ng-click="delnum($index)" />
+                </div>
+            </li>
+        </ul>
+        <input type="button" class="add-btn" value="添加一条数据" ng-click="addPro()" />
+        <div class="total">
+            <p>
+                您共购买了：<b>{{totalNum()}}</b>件 <br />
+                总共需要支付：￥<b>{{totalCart()}}</b>元
+            </p>
+        </div>
+    </div>
+
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script>
+
+        var proModule = angular.module("cartModule", []);
+        proModule.controller("cartController", function ($scope) {
+            $scope.proInfo = [{
+                src: "1.jpg",
+                proName: "这是第一个小猪，当前正在热销中",
+                proPrice: 100,
+                Num: 2
+            },
+            {
+                src: "2.jpg",
+                proName: "这是第一个小猪，当前正在热销中",
+                proPrice: 100,
+                Num: 6
+            },
+            {
+                src: "3.jpg",
+                proName: "这是第一个小猪，当前正在热销中",
+                proPrice: 100,
+                Num: 5
+            },
+            {
+                src: "4.jpg",
+                proName: "这是第一个小猪，当前正在热销中",
+                proPrice: 100,
+                Num: 5
+            }];
+
+            $scope.totalCart = function () {
+                var total = 0;
+                for (var i = 0; i < $scope.proInfo.length; i++) {
+                    total += $scope.proInfo[i].proPrice * $scope.proInfo[i].Num;
+                }
+                return total;
+            }
+
+            $scope.totalNum = function () {
+                var total = 0;
+                for (var i = 0; i < $scope.proInfo.length; i++) {
+                    total += parseInt($scope.proInfo[i].Num);
+                }
+                return total;
+            }
+
+            //购买数量减一
+            $scope.subnum = function (n) {
+                var num = $scope.proInfo[n].Num;
+                $scope.proInfo[n].Num = --num < 1 ? 1 : num;
+            }
+
+            //购买数量加一
+            $scope.addnum = function (n) {
+                var num = $scope.proInfo[n].Num;
+                $scope.proInfo[n].Num = ++num > 100000 ? 100000 : num;
+            }
+
+            //删除选择的商品
+            //ayyayBoject.splice(需要删除的index，删除的条数n，[替补在删除位置的内容])
+            $scope.delnum = function (n) {
+                $scope.proInfo.splice(n, 1);
+            }
+
+            //删除选择的商品
+            //ayyayBoject.splice(添加的位置index，0，[添加的内容])
+            $scope.addPro = function (n) {
+
+                //获取一个n到m的随机数： var c = m - n + 1; Math.floor(Math.random() * c + n);
+                var random = Math.floor(Math.random() * 4 + 1);
+                var str = {
+                    src: random+".jpg",
+                    proName: "这是第一个小猪，当前正在热销中",
+                    proPrice: 100,
+                    Num: 1
+                };
+                $scope.proInfo.splice(0, 0, str);
+            }
+
+            //判断购买的输入框输入的是否是数字
+            $scope.numCheck = function (n) {
+                if (! /^\d+$/.test($scope.proInfo[n].Num)) {
+                    $scope.proInfo[n].Num = 1;
+                }
+            }
+        });
+
+    </script>
+
+</body>
+</html>
