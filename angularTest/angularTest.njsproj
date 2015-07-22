@@ -30,6 +30,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="javascripts\directive.js" />
     <Compile Include="node_modules\angular\angular.js" />
     <Compile Include="node_modules\angular\angular.min.js" />
     <Compile Include="node_modules\angular\index.js" />
@@ -264,6 +265,7 @@
     <Content Include="node_modules\jquery\src\sizzle\test\index.html" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="view\directive.html" />
     <Content Include="view\form.html" />
     <Content Include="view\helloword.html" />
     <Content Include="view\repeat.html" />
@@ -272,6 +274,7 @@
   <ItemGroup>
     <Folder Include="images\" />
     <Folder Include="css\" />
+    <Folder Include="javascripts\" />
     <Folder Include="node_modules\" />
     <Folder Include="node_modules\angular\" />
     <Folder Include="node_modules\bootstrap\" />
